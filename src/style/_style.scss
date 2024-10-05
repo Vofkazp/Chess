@@ -1,0 +1,72 @@
+body {
+  font-family: 'Arial', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  background-color: #b1b1b1;
+}
+
+.container {
+  --size: min(96vh, 96vw);
+  --item: calc(var(--size) / 8);
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  margin: auto;
+  box-shadow: 0 0 0 5px #1a1a1a;
+  display: grid;
+  grid-template-rows: repeat(8, 1fr);
+  grid-template-columns: repeat(8, 1fr);
+  background-color: #ffffff;
+
+  .dark {
+    background-color: #343434;
+  }
+
+  .figure, .ghost, .kill {
+    --indexY: 0;
+    --indexX: 0;
+    position: absolute;
+    left: calc(var(--item) * var(--indexY));
+    top: calc(var(--item) * var(--indexX));
+    width: var(--item);
+    height: var(--item);
+    font-size: calc(var(--item) / 1.5);
+    line-height: var(--item);
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .figure {
+    border: 5px solid transparent;
+    transition: all .5s ease-in-out;
+
+    &.black {
+      color: #000000;
+    }
+
+    &.white {
+      color: #addafb;
+    }
+
+    &:hover, &.active {
+      transform: scale(1.1);
+      color: #bc0101;
+    }
+  }
+
+  .ghost {
+    color: #750101;
+
+    &:hover {
+      color: #ff0000;
+    }
+  }
+
+  .kill {
+    color: #750101;
+
+    &:hover {
+      color: #ff0000;
+    }
+  }
+}
